@@ -15,3 +15,9 @@ code {
 .searchField{
   padding: 20px;
 }
+.all-card{
+  width: 50rem;
+  border: 1px solid brown;
+  margin: 5px;
+  cursor: pointer
+}

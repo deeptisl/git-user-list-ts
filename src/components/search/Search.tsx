@@ -36,7 +36,7 @@ const SearchPage: React.FC = () => {
 
     function renderUserList(users: GitHubUserList) {
         return (
-            <Card key={users.id} style={{ width: '50rem', border: '1px solid brown', margin: '5px' }} onClick={() => getDetails(users.name)}>
+            <Card key={users.id} className='all-card' onClick={() => getDetails(users.name)}>
                 <Card.Body>{users.name}</Card.Body>
             </Card>
         )
@@ -67,7 +67,7 @@ const SearchPage: React.FC = () => {
                     </Col>
                 </Form.Group>
                 {
-                    gitUserList.length > 0 && (
+                    (gitUserList.length && !isUserDetails) > 0 && (
                         <Card style={{ width: '50rem', padding: '10px' }} >
                             <Card.Body>Total Number of Repository:- {gitUserList.length} </Card.Body>
                         </Card>

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { Navbar } from 'react-bootstrap';
-import Search from '../Search/Search';
+import Search from '../search/Search';
 
 const App: React.FC = () => {
-    
+
     return (
         <Fragment>
             <Navbar bg="dark" variant="dark">

@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
-import { GitHubUserList } from '../../Models/Type';
-import Users from '../Users/Users';
+import { GitHubUserList } from '../../models/Type';
+import Users from '../users/Users';
 
 
 const SearchPage: React.FC = () => {
@@ -9,7 +9,6 @@ const SearchPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [gitUserList, setGitUserList] = useState<Array<GitHubUserList>>([]);
     const [isUserDetails, setIsUserDetails] = useState<boolean>(false);
-    const [isClick, setIsClick] = useState<boolean>(false);
     const [details, setDetails] = useState<GitHubUserList | undefined>();
 
     useEffect(() => {
@@ -22,7 +21,6 @@ const SearchPage: React.FC = () => {
         event.preventDefault();
         setIsLoading(true);
         setIsUserDetails(false);
-        setIsClick(false);
         fetch(`https://api.github.com/users/${username}/repos`)
             .then(response => response.json())
             .then(data => {
@@ -34,12 +32,11 @@ const SearchPage: React.FC = () => {
                     setIsLoading(false);
                 }
             })
-        setIsClick(true)
     }
 
     function renderUserList(users: GitHubUserList) {
         return (
-            <Card key={users.id} style={{ width: '50rem' }} onClick={() => getDetails(users.name)}>
+            <Card key={users.id} style={{ width: '50rem', border: '1px solid brown', margin: '5px' }} onClick={() => getDetails(users.name)}>
                 <Card.Body>{users.name}</Card.Body>
             </Card>
         )
@@ -70,15 +67,15 @@ const SearchPage: React.FC = () => {
                     </Col>
                 </Form.Group>
                 {
-                    (gitUserList.length > 0 && !isUserDetails) && (
-                        gitUserList.map(renderUserList)
+                    gitUserList.length > 0 && (
+                        <Card style={{ width: '50rem', padding: '10px' }} >
+                            <Card.Body>Total Number of Repository:- {gitUserList.length} </Card.Body>
+                        </Card>
                     )
                 }
                 {
-                    (isClick && !gitUserList.length) && (
-                        <Card style={{ width: '50rem' }} >
-                            <Card.Body>No Record Found</Card.Body>
-                        </Card>
+                    (gitUserList.length > 0 && !isUserDetails) && (
+                        gitUserList.map(renderUserList)
                     )
                 }
             </Form>

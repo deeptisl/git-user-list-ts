@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Card } from 'react-bootstrap';
-import { GitHubUserList, Owner } from '../../models/Type';
+import { GitHubUserList, Owner } from '../../Models/Type';
 
 interface UserDetailsProps {
     details: GitHubUserList

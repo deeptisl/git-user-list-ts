@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
-import { GitHubUserList } from '../../models/Type';
+import { GitHubUserList } from '../../Models/Type';
 import Users from '../users/Users';
 
 
